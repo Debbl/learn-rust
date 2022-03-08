@@ -43,6 +43,12 @@
  *
  * ### 字符类型
  * char 4byte
+ *
+ * ## 复合类型
+ * ### Tuple
+ * - 长度固定
+ * ### Array 数组
+ * - 每个元素的类型必须相同
  */
 
 // 变量 常量
@@ -74,8 +80,23 @@
 // }
 
 // 标量类型
-fn main() {
-    let guess: u32 = "42".parse().expect("Not a number");
+// fn main() {
+//     let guess: u32 = "42".parse().expect("Not a number");
 
-    println!("{}", guess);
+//     println!("{}", guess);
+// }
+
+// 复合类型
+fn main() {
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    println!("{}, {}, {}", tup.0, tup.1, tup.2);
+    // 解构
+    let (x, y, z) = tup;
+    println!("{}, {}, {}", x, y, z);
+    // 访问
+    println!("{}", tup.0);
+    // 数组 [类型;长度]
+    let arr = [1, 2, 3, 4, 5, 6];
+    let a = [3; 5];
+    println!("{}, {}", arr[0], a[0]);
 }
