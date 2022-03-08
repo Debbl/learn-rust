@@ -16,6 +16,33 @@
  * - 使用相同的名字声明新的变量，新的变量会 shadow 之前声明的同名变量
  * - 后续代码使用的是新的变量
  * - 变量有 mnt 不可以 shadow
+ *
+ * ## 标量类型
+ * ### 整数类型
+ * #### 无符号
+ * - u8 u16 u32 u128 usize
+ * #### 有符号
+ * - i8 i16 i32 i128 isize
+ * > size 由计算机的架构决定 arch
+ *
+ * ### 整数的字面值
+ * - Decimal 98_222
+ * - Hex 0xff
+ * - Octal 0o77
+ * - Binary ob000_111
+ * - Byte (u8 only) b'A'
+ *
+ * ### 浮点类型
+ * - f32 f64(默认)
+ *
+ * ### 数值操作
+ *
+ * ### 布尔类型
+ * bool
+ * - true false
+ *
+ * ### 字符类型
+ * char 4byte
  */
 
 // 变量 常量
@@ -40,8 +67,15 @@
 //     println!("The value of x is {}", x);
 // }
 
+// fn main() {
+//     let spaces = "    ";
+//     let spaces = spaces.len();
+//     println!("The value is {}", spaces);
+// }
+
+// 标量类型
 fn main() {
-    let spaces = "    ";
-    let spaces = spaces.len();
-    println!("The value is {}", spaces);
+    let guess: u32 = "42".parse().expect("Not a number");
+
+    println!("{}", guess);
 }
