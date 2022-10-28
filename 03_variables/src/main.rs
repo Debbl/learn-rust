@@ -97,6 +97,7 @@ fn main() {
     println!("{}", tup.0);
     // 数组 [类型;长度]
     let arr = [1, 2, 3, 4, 5, 6];
+    println!("arr index 10 is {}", arr[1]);
     let a = [3; 5];
     println!("{}, {}", arr[0], a[0]);
 }
