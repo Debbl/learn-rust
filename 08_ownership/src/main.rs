@@ -83,7 +83,7 @@ fn takes_and_gives_back(a_string: String) -> String {
     a_string
 } */
 
-fn main() {
+/* fn main() {
     let s1 = String::from("hello");
 
     let (s2, len) = calculate_length(s1);
@@ -95,4 +95,72 @@ fn main() {
 fn calculate_length(s: String) -> (String, usize) {
     let length = s.len();
     (s, length)
+} */
+
+// 不可变借用，只是借用，并没有起所有权
+/* fn main() {
+    let s1 = String::from("hello");
+    let len = calculate_length(&s1);
+    println!("The length of '{}' is {}.", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize{
+   s.len()
+} */
+
+// 无法改变 不可变借用 的值
+/* fn main() {
+    let s = String::from("hello");
+
+    change(&s);
+}
+
+fn change(s: &String) {
+    s.push_str(", world!");
+} */
+
+// 可变借用
+/* fn main() {
+    let mut s = String::from("hello");
+    change(&mut s);
+    println!("{}", s);
+}
+
+fn change(s: &mut String)   {
+    s.push_str(", world!")
+} */
+
+// slice
+/* fn main() {
+    let s = String::from("hello world");
+    println!("{}", first_word(&s))
+}
+
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i
+        }
+    }
+    s.len()
+} */
+
+fn main() {
+    let mut s = String::from("hello world!");
+    let word = first_word(&s);
+    println!("{}", word);
+
+    s.clear();
+    // println!("{}", word);
+}
+
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+    &s[..]
 }
